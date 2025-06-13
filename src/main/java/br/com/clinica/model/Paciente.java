@@ -9,7 +9,6 @@ public class Paciente {
     private LocalDate dataNascimento;
     private String telefone;
 
-    // Construtor
     public Paciente(int id, String nome, String cpf, LocalDate dataNascimento, String telefone) {
         this.id = id;
         this.nome = nome;
@@ -18,7 +17,6 @@ public class Paciente {
         this.telefone = telefone;
     }
 
-    // Construtor sem ID (para novos pacientes)
     public Paciente(String nome, String cpf, LocalDate dataNascimento, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
@@ -26,7 +24,6 @@ public class Paciente {
         this.telefone = telefone;
     }
 
-    // Getters e Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getNome() { return nome; }

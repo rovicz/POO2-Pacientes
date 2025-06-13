@@ -1,8 +1,5 @@
-/* Arquivo: styles.css - Tema Escuro Moderno */
-
-/* --- GERAL --- */
 .root {
-    -fx-background-color: #121212; /* Fundo principal quase preto */
+    -fx-background-color: #121212;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-padding: 20px;
 }
@@ -14,11 +11,10 @@
 }
 
 .label {
-    -fx-text-fill: #A0A0A0; /* Cinza claro para os rótulos */
+    -fx-text-fill: #A0A0A0;
     -fx-font-size: 13px;
 }
 
-/* --- CAMPOS DE TEXTO E DATA --- */
 .text-field, .date-picker .text-field {
     -fx-background-color: #1E1E1E;
     -fx-text-fill: #EAEAEA;
@@ -31,7 +27,7 @@
 }
 
 .text-field:focused, .date-picker .text-field:focused {
-    -fx-border-color: #4A90E2; /* Borda azul ao focar */
+    -fx-border-color: #4A90E2;
     -fx-border-width: 1.5px;
 }
 
@@ -43,18 +39,16 @@
 }
 
 .date-picker {
-    -fx-border-color: #333333; /* Mesma cor de borda dos outros campos */
+    -fx-border-color: #333333;
     -fx-border-width: 1px;
-    -fx-border-radius: 4px; /* Mesmo arredondamento dos outros */
+    -fx-border-radius: 4px;
 }
 
-/* Esta regra garante que o foco também seja consistente */
 .date-picker:focused {
-    -fx-border-color: #4A90E2; /* Mesma cor de foco dos outros campos */
+    -fx-border-color: #4A90E2;
     -fx-border-width: 1.5px;
 }
 
-/* --- BOTÕES --- */
 .button {
     -fx-text-fill: #EAEAEA;
     -fx-background-color: #333333;
@@ -69,7 +63,6 @@
     -fx-background-color: #4A4A4A;
 }
 
-/* Botão Cadastrar - Destaque */
 #cadastrar-button {
     -fx-background-color: #F8F8F8;
     -fx-text-fill: #121212;
@@ -94,7 +87,6 @@
     -fx-fill: #121212;
 }
 
-/* --- TABELA --- */
 .table-view {
     -fx-background-color: #1E1E1E;
     -fx-border-color: #333333;
@@ -135,7 +127,6 @@
     -fx-background-color: #4A90E2;
 }
 
-/* Botão de deletar na tabela */
 .delete-button {
     -fx-background-color: transparent;
     -fx-padding: 5;

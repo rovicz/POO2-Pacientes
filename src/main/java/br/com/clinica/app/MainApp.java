@@ -33,35 +33,29 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Sistema de Gerenciamento de Clientes da Clínica");
 
-        VBox rootLayout = new VBox(20); // Layout principal com espaçamento vertical de 20px
+        VBox rootLayout = new VBox(20);
         rootLayout.setPadding(new Insets(20));
         rootLayout.getStyleClass().add("root");
 
-        // --- TÍTULO ---
         Label lblTitle = new Label("Sistema de Gerenciamento de Clientes da Clínica");
         lblTitle.getStyleClass().add("title-label");
 
-        // --- FORMULÁRIO ---
         GridPane formGrid = createFormGrid();
 
-        // --- TABELA ---
         setupTableView();
         carregarPacientes();
 
-        // --- BARRA DE BOTÕES ---
         BorderPane buttonBar = createButtonBar();
 
         rootLayout.getChildren().addAll(lblTitle, formGrid, tableView, buttonBar);
-        VBox.setVgrow(tableView, Priority.ALWAYS); // Faz a tabela crescer para preencher o espaço
+        VBox.setVgrow(tableView, Priority.ALWAYS);
 
-        // --- CENA ---
         Scene scene = new Scene(rootLayout, 900, 750);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Listener para seleção na tabela
         tableView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldSelection, newSelection) -> preencherFormulario(newSelection)
         );
@@ -72,7 +66,6 @@ public class MainApp extends Application {
         gridPane.setHgap(20);
         gridPane.setVgap(15);
 
-        // Coluna 0
         gridPane.add(new Label("ID:"), 0, 0);
         txtId = new TextField();
         txtId.setEditable(false);
@@ -89,7 +82,6 @@ public class MainApp extends Application {
         txtTelefone.setPromptText("(00) 00000-0000");
         gridPane.add(txtTelefone, 0, 5);
 
-        // Coluna 1
         gridPane.add(new Label("Nome:"), 1, 0);
         txtNome = new TextField();
         txtNome.setPromptText("Nome completo");
@@ -103,7 +95,6 @@ public class MainApp extends Application {
         gridPane.add(new Label("Buscar por Nome:"), 1, 4);
         gridPane.add(createSearchBox(), 1, 5);
 
-        // Configura as colunas para terem larguras iguais
         ColumnConstraints col1 = new ColumnConstraints();
         col1.setPercentWidth(50);
         ColumnConstraints col2 = new ColumnConstraints();
@@ -117,11 +108,11 @@ public class MainApp extends Application {
         HBox searchBox = new HBox();
         txtBuscaNome = new TextField();
         txtBuscaNome.setPromptText("Digite um nome");
-        HBox.setHgrow(txtBuscaNome, Priority.ALWAYS); // Faz o campo de texto crescer
+        HBox.setHgrow(txtBuscaNome, Priority.ALWAYS);
 
         Button btnSearch = new Button();
         btnSearch.setGraphic(new FontIcon(FontAwesomeSolid.SEARCH));
-        btnSearch.setId("search-button"); // ID para estilização específica
+        btnSearch.setId("search-button");
         btnSearch.setOnAction(e -> buscarPaciente());
 
         searchBox.getChildren().addAll(txtBuscaNome, btnSearch);
@@ -132,13 +123,11 @@ public class MainApp extends Application {
         BorderPane buttonBar = new BorderPane();
         buttonBar.setPadding(new Insets(10, 0, 0, 0));
 
-        // Botão Cadastrar
         Button btnCadastrar = new Button("Cadastrar");
         btnCadastrar.setGraphic(new FontIcon(FontAwesomeSolid.PLUS_CIRCLE));
         btnCadastrar.setId("cadastrar-button");
         btnCadastrar.setOnAction(e -> cadastrarPaciente());
 
-        // Botões Atualizar e Listar Todos
         Button btnAtualizar = new Button("Atualizar");
         btnAtualizar.setGraphic(new FontIcon(FontAwesomeSolid.SYNC_ALT));
         btnAtualizar.setOnAction(e -> atualizarPaciente());
@@ -177,15 +166,13 @@ public class MainApp extends Application {
         TableColumn<Paciente, String> colTelefone = new TableColumn<>("Telefone");
         colTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
 
-        // --- COLUNA DE AÇÃO (EXCLUIR) ---
         TableColumn<Paciente, Void> colAcao = new TableColumn<>("Ações");
 
         colAcao.setCellFactory(param -> new TableCell<>() {
             private final Button btnExcluir = new Button();
             {
-                // Configuração do botão de exclusão
                 FontIcon icon = new FontIcon(FontAwesomeSolid.TRASH_ALT);
-                icon.setIconColor(new javafx.scene.paint.Color(0.8, 0.2, 0.2, 1.0)); // Cor vermelha
+                icon.setIconColor(new javafx.scene.paint.Color(0.8, 0.2, 0.2, 1.0));
                 btnExcluir.setGraphic(icon);
                 btnExcluir.getStyleClass().add("delete-button");
                 btnExcluir.setOnAction(event -> {
@@ -208,8 +195,6 @@ public class MainApp extends Application {
 
         tableView.getColumns().addAll(colId, colNome, colCpf, colNascimento, colTelefone, colAcao);
     }
-
-    // --- Métodos de Lógica (CRUD) - Adaptados ---
 
     private void carregarPacientes() {
         try {
@@ -240,7 +225,7 @@ public class MainApp extends Application {
     private void buscarPaciente() {
         String nomeBusca = txtBuscaNome.getText();
         if (nomeBusca == null || nomeBusca.trim().isEmpty()) {
-            carregarPacientes(); // Se a busca for vazia, lista todos
+            carregarPacientes();
             return;
         }
         try {
@@ -310,7 +295,6 @@ public class MainApp extends Application {
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
 
-        // Estilização do diálogo de alerta para combinar com o tema escuro
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         dialogPane.getStyleClass().add("root");
