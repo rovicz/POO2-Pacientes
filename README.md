@@ -4,10 +4,6 @@
 ![JavaFX](https://img.shields.io/badge/JavaFX-21-orange?style=for-the-badge&logo=openjfx)
 ![Maven](https://img.shields.io/badge/Maven-4.0.0-red?style=for-the-badge&logo=apachemaven)
 
-<p align="center">
-  <img src="https://i.imgur.com/gK9qZtV.png" alt="Screenshot da Aplicação" width="800"/>
-</p>
-
 Este projeto é uma aplicação desktop desenvolvida em **Java** com a framework **JavaFX** para o gerenciamento de pacientes de uma clínica. O sistema oferece uma interface gráfica moderna e intuitiva para realizar as operações básicas de cadastro, consulta, atualização e exclusão de registros.
 
 ## ✨ Funcionalidades Principais
